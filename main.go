@@ -54,12 +54,16 @@ func main() {
 		}
 	}()
 
-	// Background: random proxy rotation every 5-10 minutes
+	// Background: random proxy rotation every 3-6 minutes
+	// If pool is empty, trigger immediate refresh instead of rotating
 	go func() {
 		for {
-			delay := 5*time.Minute + time.Duration(rand.Intn(5))*time.Minute
+			delay := 3*time.Minute + time.Duration(rand.Intn(4))*time.Minute
 			time.Sleep(delay)
-			if pool.Size() > 1 {
+			if pool.Size() == 0 {
+				log.Printf("[main] pool empty, triggering immediate refresh")
+				TriggerRefresh()
+			} else if pool.Size() > 1 {
 				pool.SwitchNext()
 			}
 		}

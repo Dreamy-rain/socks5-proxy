@@ -2,6 +2,8 @@
 
 A self-rotating SOCKS5 proxy pool. Scrapes free SOCKS5 proxies, verifies Google connectivity, filters out CN/HK IPs, and exposes a local SOCKS5 endpoint that automatically rotates upstream proxies.
 
+<img width="1910" height="915" alt="image" src="https://github.com/user-attachments/assets/c17a03a8-ec93-4c8c-b2fa-58e23c62a729" />
+
 ## Features
 
 - Scrapes proxy lists from configurable source (default: `socks5-proxy.github.io`)
